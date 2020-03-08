@@ -1,4 +1,6 @@
-from random import randrange, getrandbits
+import random as _r
+import time as _t
+_r.seed(_t.clock())
 
 def is_prime(n, k=128):
     """ Test if a number is prime
@@ -21,7 +23,7 @@ def is_prime(n, k=128):
         r //= 2
     # do k tests
     for _ in range(k):
-        a = randrange(2, n - 1)
+        a = _r.randrange(2, n - 1)
         x = pow(a, r, n)
         if x != 1 and x != n - 1:
             j = 1
@@ -41,9 +43,11 @@ def generate_prime_candidate(length):
         return a integer
     """
     # generate random bits
-    p = getrandbits(length)
+    p = _r.getrandbits(length)
+    
     # apply a mask to set MSB and LSB to 1
     p |= (1 << length - 1) | 1
+
     return p
     
 def generate_prime_number(length=1024):
@@ -57,5 +61,3 @@ def generate_prime_number(length=1024):
     while not is_prime(p, 128):
         p = generate_prime_candidate(length)
     return p
-    
-print(generate_prime_number())

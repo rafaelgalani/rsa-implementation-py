@@ -1,5 +1,9 @@
 import random as _r
 import primes as _p
+import math as _m
+
+def get_bits(x):
+	return len(bin(abs(x))[2:])
 
 def _are_coprimes(x, y):
     return _calc_gcd(x, y) == 1
@@ -14,11 +18,12 @@ def calc_lcm(x, y):
    return lcm_value
 
 def generate_e(totient):
-    lower_range = 3
-    print(lower_range, totient)
-    e = _p.generate(lower_range, totient)
+    max_bits_size = get_bits(totient)-1
+
+    e = _p.generate_prime_number(max_bits_size)
+    
     while not _are_coprimes(e, totient):
-        e = _p.generate(lower_range, totient)
+        e = _p.generate_prime_number(max_bits_size)
 
     return e
 
