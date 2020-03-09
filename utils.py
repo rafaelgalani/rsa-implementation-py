@@ -18,7 +18,9 @@ def calc_lcm(x, y):
    return lcm_value
 
 def generate_e(totient):
-    max_bits_size = get_bits(totient)-1
+    max_bits_size = _r.randint(2, get_bits(totient)-1)
+
+    max_bits_size = min(75, max_bits_size)
 
     e = _p.generate_prime_number(max_bits_size)
     

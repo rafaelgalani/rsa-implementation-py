@@ -46,7 +46,6 @@ class RSA:
     @staticmethod
     def get_random_rsa():
         p, q = primes.generate_prime_number(2048), primes.generate_prime_number(2048)
-
         return RSA(p, q)
 
     def show_values(self):

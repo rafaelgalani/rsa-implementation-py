@@ -16,25 +16,32 @@ def is_prime(n, k=128):
     if n <= 1 or n % 2 == 0:
         return False
     # find r and s
-    s = 0
-    r = n - 1
-    while r & 1 == 0:
-        s += 1
-        r //= 2
-    # do k tests
-    for _ in range(k):
-        a = _r.randrange(2, n - 1)
-        x = pow(a, r, n)
-        if x != 1 and x != n - 1:
-            j = 1
-            while j < s and x != n - 1:
-                x = pow(x, 2, n)
-                if x == 1:
+
+    if n < 100000:
+        with open('primes-to-100k.txt') as f:
+            content = f.readlines()
+            numbers = [int(x.strip()) for x in content] 
+            return n in numbers
+    else:
+        s = 0
+        r = n - 1
+        while r & 1 == 0:
+            s += 1
+            r //= 2
+        # do k tests
+        for _ in range(k):
+            a = _r.randrange(2, n - 1)
+            x = pow(a, r, n)
+            if x != 1 and x != n - 1:
+                j = 1
+                while j < s and x != n - 1:
+                    x = pow(x, 2, n)
+                    if x == 1:
+                        return False
+                    j += 1
+                if x != n - 1:
                     return False
-                j += 1
-            if x != n - 1:
-                return False
-    return True
+        return True
 
 def generate_prime_candidate(length):
     """ Generate an odd integer randomly
