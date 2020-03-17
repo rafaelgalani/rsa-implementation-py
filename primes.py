@@ -4,7 +4,7 @@ import random as _r
 import time as _t
 _r.seed(_t.clock())
 
-def is_prime(n, k=128):
+def is_prime(n, k=64):
     """ Test if a number is prime
         Args:
             n -- int -- the number to test
