@@ -43,18 +43,24 @@ def is_e_valid(p, q, e):
         return True
     return False
 
-def get_init_value_input(message):
+def get_init_value_input(message, first_value=None):
     while True:
         try:
             value = int(input(message))
-            while not RSA.is_prime(value) or value <= 2:
+            invalid_value = type(first_value) == int and first_value == value
+
+            while not RSA.is_prime(value) or value <= 2 or invalid_value:
                 
                 if not RSA.is_prime(value):
                     print('The chosen value "{}" is not prime. Try another one.'.format(value))
-                if value <= 2:
+                elif value <= 2:
                     print('The value must be greater than 2. Try another one.')
+                elif invalid_value:
+                    print('The chosen value must be different than the previous one. Try another one.')
 
                 value = int(input(message))
+                invalid_value = type(first_value) == int and first_value == value
+                
             return value
         except ValueError:
             print('The value typed is not a valid number. Try another one.')
@@ -94,7 +100,7 @@ while run:
         print()
         print('Setting values up...')
         p = get_init_value_input('P: ')
-        q = get_init_value_input('Q: ')
+        q = get_init_value_input('Q: ', p)
         e = get_e_value('E: ')
         print()
         

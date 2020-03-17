@@ -1,7 +1,7 @@
 import primes
 from utils import *
 
-BIT_SIZE = 100
+BIT_SIZE = 2048
 class RSA:
 
     @staticmethod
@@ -13,13 +13,13 @@ class RSA:
         self.q = q
 
         self.n         = p*q
-        self.totient_n = totient_n = (p-1)*(q-1)
+        self.totient_n = calc_lcm(p-1, q-1)
         if e is None:
-            self.e         = e         = generate_e(totient_n)
+            self.e = generate_e(self.totient_n)
         else:
             self.e = e
             
-        self.d         = mod_multiplicative_inverse(self.e, totient_n)
+        self.d         = mod_multiplicative_inverse(self.e, self.totient_n)
 
     def encrypt_char_function(self, char_code):
         return pow(char_code, self.e, self.n)
