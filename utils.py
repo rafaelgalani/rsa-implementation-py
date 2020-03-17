@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import random as _r
 import primes as _p
 import math as _m

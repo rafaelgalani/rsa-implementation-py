@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from rsa import RSA
 from utils import *
 from primes import is_prime

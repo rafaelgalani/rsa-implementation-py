@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import random as _r
 import time as _t
 _r.seed(_t.clock())
