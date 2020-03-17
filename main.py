@@ -95,6 +95,25 @@ run = True
 
 while run:
     print()
+    print('############################')
+    print('############################')
+    print('############################')
+    print('----------------------------')
+    
+    print()
+
+    print('RSA - PYTHON3 IMPLEMENTATION')
+    print('             EC10           ')
+    print('RAFAEL GALANI - RA 082510282')
+    print('  RENAN DIAS - RA 082510282 ')
+    
+    print()
+
+    print('----------------------------')
+    print('############################')
+    print('############################')
+    print('############################')
+    print()
     use_own_values = ask_input("values_origin")
 
     if use_own_values == "1":
