@@ -32,7 +32,17 @@ from utils import *
 BIT_SIZE = 2048 # Valor do tamanho dos números P e Q em bits. É possível alterar este parâmetro. Basta trocar o número.
 ```
 
-Foi utilizado o algoritmo de [Teste de primalidade de Miller-Rabin](https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test) na definição de números primos de tamanho muito grande (acima de 1000 bits). É um algoritmo probabilístico e iterativo. O número ideal de iterações é acima de 40, para chaves de 2048 bits. A explicação utilizada como referencial pode ser encontrada [aqui](https://stackoverflow.com/questions/6325576/how-many-iterations-of-rabin-miller-should-i-use-for-cryptographic-safe-primes).
+Foi utilizado o algoritmo de [Teste de primalidade de Miller-Rabin](https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test) na definição de números primos de tamanho muito grande (acima de 1000 bits). É um algoritmo probabilístico e iterativo. O número ideal de iterações é acima de 40, para chaves de 2048 bits. A explicação utilizada como referencial pode ser encontrada [aqui](https://stackoverflow.com/questions/6325576/how-many-iterations-of-rabin-miller-should-i-use-for-cryptographic-safe-primes).    
+  
+Um exemplo de como rodar o programa pode ser:
+- Seleciono os valores (ou eu, ou o programa, tanto faz);
+- Seleciono a opção `1 - Encrypt`;
+- Digito a palavra;
+- **Copio** os valores obtidos, conforme [este link](http://prntscr.com/rhi0bf);
+- Seleciono a opção `1 - Encrypt`;
+- **Colo** os valores obtidos, conforme [este link](http://prntscr.com/rhi0gz).  
+  
+Podemos ver que a palavra digitada e o resultado final têm o comportamento esperado.
 
 ## Membros
 RA 082150282 - Rafael Galani  
