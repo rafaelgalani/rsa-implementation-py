@@ -1,20 +1,25 @@
 import primes
 from utils import *
 
+BIT_SIZE = 100
 class RSA:
 
     @staticmethod
     def is_prime(n):
         return primes.is_prime(n)
     
-    def __init__(self, p, q):
+    def __init__(self, p, q, e=None):
         self.p = p
         self.q = q
 
-        self.n         = n         = p*q
+        self.n         = p*q
         self.totient_n = totient_n = (p-1)*(q-1)
-        self.e         = e         = generate_e(totient_n)
-        self.d         = d         = mod_multiplicative_inverse(e, totient_n)
+        if e is None:
+            self.e         = e         = generate_e(totient_n)
+        else:
+            self.e = e
+            
+        self.d         = mod_multiplicative_inverse(self.e, totient_n)
 
     def encrypt_char_function(self, char_code):
         return pow(char_code, self.e, self.n)
@@ -45,7 +50,7 @@ class RSA:
 
     @staticmethod
     def get_random_rsa():
-        p, q = primes.generate_prime_number(2048), primes.generate_prime_number(2048)
+        p, q = primes.generate_prime_number(BIT_SIZE), primes.generate_prime_number(BIT_SIZE)
         return RSA(p, q)
 
     def show_values(self):

@@ -5,6 +5,9 @@ import math as _m
 def get_bits(x):
 	return len(bin(abs(x))[2:])
 
+def are_coprimes(x, y):
+    return _are_coprimes(x, y)
+    
 def _are_coprimes(x, y):
     return _calc_gcd(x, y) == 1
 

@@ -1,4 +1,6 @@
 from rsa import RSA
+from utils import *
+from primes import is_prime
 
 sections = {
    
@@ -33,6 +35,14 @@ def input_section(section_entry):
 
     return option
 
+def is_e_valid(p, q, e):
+    totient = (p-1)*(q-1)
+    if e >= totient:
+        return False
+    elif are_coprimes(e, totient) and is_prime(e):
+        return True
+    return False
+
 def get_init_value_input(message):
     while True:
         try:
@@ -49,6 +59,27 @@ def get_init_value_input(message):
         except ValueError:
             print('The value typed is not a valid number. Try another one.')
 
+def get_e_value(message):
+    while True:
+        try:
+            value = int(input(message))
+            e_valid = is_e_valid(p, q, value)
+            value_lte_2 = value <= 2
+
+            while not e_valid or value_lte_2:
+                if not e_valid:
+                    print('The chosen value "{}" is not valid (must be lower than totient, coprime with totient and also a prime number). Try another one.'.format(value))
+                elif value_lte_2:
+                    print('The value must be greater than 2. Try another one.')
+
+                value = int(input(message))
+                e_valid = is_e_valid(p, q, value)
+                value_lte_2 = value <= 2
+            return value
+        except ValueError:
+            print('The value typed is not a valid number. Try another one.')
+
+
 def ask_input(name):
     return input_section(sections[name])
 
@@ -64,9 +95,10 @@ while run:
         print('Setting values up...')
         p = get_init_value_input('P: ')
         q = get_init_value_input('Q: ')
+        e = get_e_value('E: ')
         print()
         
-        rsa = RSA(p, q)
+        rsa = RSA(p, q, e)
     elif use_own_values == "2":
         rsa = RSA.get_random_rsa()
     elif use_own_values == "3":
