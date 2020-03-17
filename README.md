@@ -39,7 +39,7 @@ Um exemplo de como rodar o programa pode ser:
 - Seleciono a opção `1 - Encrypt`;
 - Digito a palavra;
 - **Copio** os valores obtidos, conforme [este link](http://prntscr.com/rhi0bf);
-- Seleciono a opção `1 - Encrypt`;
+- Seleciono a opção `2 - Decrypt`;
 - **Colo** os valores obtidos, conforme [este link](http://prntscr.com/rhi0gz).  
   
 Podemos ver que a palavra digitada e o resultado final têm o comportamento esperado.
